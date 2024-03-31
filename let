@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+
+let user = {
+    name: "Иван",
+    surname: "Иванов",
+    age: "25"
+}
+
+alert(user.name)
+alert(user.age)

@@ -7,7 +7,8 @@
 </head>
 <body>
     <script>
-        alert("JavaScript is awesome!");
+        let age = prompt("Введите год вашего рождения:");
+        alert(age);
     </script>
 </body>
 </html>

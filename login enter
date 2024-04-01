@@ -17,6 +17,9 @@
         else if(question == "user"){
             console.log("Статистика.");
         }
+        else{
+            console.log("Неверный логин");
+        }
     </script>
 </body>
 </html>

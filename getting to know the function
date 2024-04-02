@@ -1,0 +1,5 @@
+function getMulti(a, b) {
+    return a * b;
+}
+
+console.log(getMulti(5,6));

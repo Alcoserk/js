@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">push</button>
+
+
+    <script>
+        //Находидим элемент по ид и записываем его в переменную
+        let elem = document.getElementById('btn');
+
+
+        elem.style.background = '#fff';
+        elem.style.fontSize = '24px';
+        elem.style.color = '#eee';
+
+
+        //Меняем текст внутри элемента
+        elem.innerHTML = 'Другой текст';
+
+
+        //Добавим элементу класс
+        elem.classList.add('border');
+    </script>
+
+
+    
+</body>
+</html>
+
+
+
+.border{
+    border: 5px solid #4322;
+    border-radius: 10px;
+}

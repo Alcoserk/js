@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">Нажмите</button>
+
+
+    <script>
+        //В строке 14 мы обращаемся к элементу с классом btn, и назначаем ему вывести окно при нажатии с "1"
+        document.querySelector(".btn").addEventListener("click", () => alert('1'));
+        //В строке 14 мы обращаемся к элементу с классом btn, и назначаем ему вывести окно при нажатии с "2"
+        document.querySelector(".btn").addEventListener("click", () => alert('2'));
+    </script>
+</body>
+</html>

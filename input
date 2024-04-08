@@ -17,6 +17,14 @@
         inputElement = document.querySelector(".name");
 
         btnElement.addEventListener("click", function(){ //по клику на кнопку записываем в result значение из input
+            if(inputElement.value === ""){
+                inputElement.style.borderColor = "red"; //окрашиваем рамку в красный
+                resultElement.textContent = ""; //обнуляем результат
+            }
+            else{
+                inputElement.style.borderColor = "green";
+                resultElement.textContent = inputElement.value; //Если введены символы, то выводим их
+            }
             resultElement.textContent = inputElement.value; //textContent тут для того что бы при вводе html кода в btnElement он не сработал
         });
     </script>

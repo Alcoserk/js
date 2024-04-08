@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class="name" type="text">
+    <button class="btn">Отправить</button>
+    <p class="result"></p>
+
+
+    <script>
+        btnElement = document.querySelector(".btn");
+        resultElement = document.querySelector(".result");
+        inputElement = document.querySelector(".name");
+
+        btnElement.addEventListener("click", function(){ //по клику на кнопку записываем в result значение из input
+            resultElement.textContent = inputElement.value; //textContent тут для того что бы при вводе html кода в btnElement он не сработал
+        });
+    </script>
+</body>
+</html>

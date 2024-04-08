@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input class="input" type="number" name="firstNumber"> + <input class="input" type="number" name="secondNumber">
+    <button class="btn">Вычислить</button>
+    <p>Ответ: <span class="result"></span></p>
+
+
+    <script>
+        btnElement = document.querySelector(".btn");
+        resultElement = document.querySelector(".result");
+        firstNumber = document.querySelector('[name="firstNumber"]');
+        secondNumber = document.querySelector('[name="secondNumber"]');
+
+        btnElement.addEventListener("click", function(){
+            resultElement.textContent = parseInt(firstNumber.value) + parseInt(secondNumber.value);
+        });
+    </script>
+</body>
+</html>

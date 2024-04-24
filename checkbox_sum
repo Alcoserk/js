@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{display: inline-block;}
+        div{margin-bottom: 20px;}
+    </style>
+</head>
+<body>
+    <p>Выберите товары:</p>
+    <div>
+        <input type="checkbox" id="choice1" class="product" value="120">
+        <label for="choice1">Пирог с яблоком - 120р</label>
+    </div>
+    <div>
+        <input type="checkbox" id="choice2" class="product" value="80">
+        <label for="choice2">Шоколадный кекс - 80р</label>
+    </div>
+    <div>
+        <input type="checkbox" id="choice3" class="product" value="180">
+        <label for="choice3">Чискейк - 180р</label>
+    </div>
+
+    <button id="btn">Выбрать</button>
+
+    <p>Общая стоимость: <span id="result"></span></p>
+    <script>
+        const radioButtons = document.querySelectorAll(".product");
+        const btnElement = document.querySelector("#btn");
+        const resultElement = document.querySelector("#result");
+
+        btnElement.addEventListener("click", function(){
+            let selectedContactValues = 0; 
+            for (const radioButton of radioButtons){
+                if(radioButton.checked){
+                    selectedContactValues += parseInt(radioButton.value);
+                }
+            }
+            if(selectedContactValues.length != 0){
+                resultElement.textContent = selectedContactValues + "руб";
+            } else {
+                resultElement.textContent = "ничего не выбрано.";
+            }
+        });
+    </script>
+</body>
+</html>

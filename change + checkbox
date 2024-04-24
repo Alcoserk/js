@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{display:inline-block;}
+        div{margin-bottom: 20px;}
+    </style>
+</head>
+<body>
+    <p>Выберите способ связи:</p>
+    <div>
+        <input type="checkbox" id="contactChoice1" name="contact" value="120">
+        <label for="contactChoice1">Пирог с яблоком - 120р</label>
+    </div>
+    <div>
+        <input type="checkbox" id="contactChoice2" name="contact" value="80">
+        <label for="contactChoice2">Шоколадный кекс - 80р</label>
+    </div>
+    <div>
+        <input type="checkbox" id="contactChoice3" name="contact" value="180">
+        <label for="contactChoice3">Чискейк - 180р</label>
+    </div>
+    <p>Цены на товар: <span class="result"></span></p>
+
+    <script>
+        resultElement = document.querySelector(".result");
+        radioButtons = document.querySelectorAll('[name="contact"]');
+        let totals = [];
+
+        radioButtons.forEach(element => { 
+            element.addEventListener("change", function(){
+                if(element.checked){
+                    totals.push(element.value);
+                }else{
+                    totals.splice(totals.indexOf(element.value),1)
+                }
+
+                if(totals.length != 0){
+                    resultElement.textContent = totals.join(", ");
+                }else{
+                    totals.textContent = "ничего не выбрано."
+                }
+            });
+        });
+    </script>
+</body>
+</html>

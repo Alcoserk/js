@@ -28,18 +28,18 @@
     <script>
         resultElement = document.querySelector(".result");
         radioButtons = document.querySelectorAll('[name="contact"]');
-        let totals = [];
+        let totals = 0;
 
         radioButtons.forEach(element => { 
             element.addEventListener("change", function(){
                 if(element.checked){
-                    totals.push(element.value);
+                    totals += parseInt(element.value);
                 }else{
-                    totals.splice(totals.indexOf(element.value),1)
+                    totals -= parseInt(element.value);
                 }
 
                 if(totals.length != 0){
-                    resultElement.textContent = totals.join(", ");
+                    resultElement.textContent = totals + "руб";
                 }else{
                     totals.textContent = "ничего не выбрано."
                 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{margin-bottom: 20px;}
+        .inputs_value{display: flex;}
+    </style>
+</head>
+<body>
+    <div>
+        <label for="name">Name :</label>
+        <input class="inputs_value" id = "name" type="text">
+    </div>
+    <div>
+        <label for="surname">Surname :</label>
+        <input class="inputs_value" id = "surname" type="text">
+    </div>
+    <button id="btn">Push into console</button>
+
+    <script>
+        const user = {
+            name: "",
+            surname: "",
+        };
+
+        const btn = document.querySelector("#btn");
+        const inputName = document.querySelector("#name");
+        const inputSurName = document.querySelector("#surname");
+
+        btn.addEventListener("click", function(){
+            user.name = inputName.value;
+            user.surname = inputSurName.value;
+            console.log(user);
+        })
+    </script>
+</body>
+</html>

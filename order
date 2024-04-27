@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>COFFEE HOUSE</title>
+</head>
+<body>
+    <header><p class="head">COFFEE HOUSE</p></header>
+    <main>
+        <section class="order">
+            <div class="fio">
+                <input type="text" id="surname">
+                <input type="text" id="name">
+            </div>
+
+            <div class="column">
+                <input class="checkbox" id="product" type="radio" value="80">
+                <label for="product">Эспрессо 80р.</label>
+
+                <input class="checkbox" id="product" type="radio" value="110">
+                <label for="product">Американо 110р.</label>
+
+                <input class="checkbox" id="product" type="radio" value="120">
+                <label for="product">Латте 120р.</label>
+
+                <input class="checkbox" id="product" type="radio" value="90">
+                <label for="product">Капучино 90р.</label>
+            </div>
+
+            <div class="column">
+                <input class="checkbox" id="product" type="radio" value="80">
+                <label for="product">Шоколадный кекс 80р.</label>
+
+                <input class="checkbox" id="product" type="radio" value="90">
+                <label for="product">Черничный кекс 90р.</label>
+
+                <input class="checkbox" id="product" type="radio" value="100">
+                <label for="product">Яблочный торт 100р.</label>
+            </div>
+
+            <p class="result">Итого:</p>
+
+            <button>ОФОРМИТЬ ЗАКАЗ</button>
+        </section>
+            
+    </main>
+    <footer></footer>
+</body>
+</html>
+
+
+
+
+body{
+    font-family: 'Oswald', sans-serif;
+}
+
+main{
+    background: #817070;
+}
+
+.head{
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 53px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.order{
+    color: #fff;
+    font-size: 20px;
+}
+
+.checkbox{
+    position: relative;
+    padding: 0 0 0 40px;
+    cursor: pointer;
+}

@@ -10,75 +10,146 @@
     <title>COFFEE HOUSE</title>
 </head>
 <body>
-    <header><p class="head">COFFEE HOUSE</p></header>
+    <header><p class="head_text">COFFEE HOUSE</p></header>
     <main>
         <section class="order">
             <div class="fio">
-                <input type="text" id="surname">
-                <input type="text" id="name">
+                <input type="text" class="input_fio" id="surname" placeholder="Введите Фамилию">
+                <input type="text" class="input_fio" id="name" placeholder="Введите Имя">
             </div>
+            <div class="colums">
+                <div class="column_1">
+                    <input class="checkbox" id="product" type="radio" value="80">
+                    <label for="product">Эспрессо 80р.</label>
 
-            <div class="column">
-                <input class="checkbox" id="product" type="radio" value="80">
-                <label for="product">Эспрессо 80р.</label>
+                    <input class="checkbox" id="product" type="radio" value="110">
+                    <label for="product">Американо 110р.</label>
 
-                <input class="checkbox" id="product" type="radio" value="110">
-                <label for="product">Американо 110р.</label>
+                    <input class="checkbox" id="product" type="radio" value="120">
+                    <label for="product">Латте 120р.</label>
 
-                <input class="checkbox" id="product" type="radio" value="120">
-                <label for="product">Латте 120р.</label>
+                    <input class="checkbox" id="product" type="radio" value="90">
+                    <label for="product">Капучино 90р.</label>
+                </div>
 
-                <input class="checkbox" id="product" type="radio" value="90">
-                <label for="product">Капучино 90р.</label>
+                <div class="column_2">
+                    <input class="checkbox" id="product" type="radio" value="80">
+                    <label for="product">Шоколадный кекс 80р.</label>
+
+                    <input class="checkbox" id="product" type="radio" value="90">
+                    <label for="product">Черничный кекс 90р.</label>
+
+                    <input class="checkbox" id="product" type="radio" value="100">
+                    <label for="product">Яблочный торт 100р.</label>
+                </div>
             </div>
-
-            <div class="column">
-                <input class="checkbox" id="product" type="radio" value="80">
-                <label for="product">Шоколадный кекс 80р.</label>
-
-                <input class="checkbox" id="product" type="radio" value="90">
-                <label for="product">Черничный кекс 90р.</label>
-
-                <input class="checkbox" id="product" type="radio" value="100">
-                <label for="product">Яблочный торт 100р.</label>
-            </div>
-
+            
             <p class="result">Итого:</p>
 
             <button>ОФОРМИТЬ ЗАКАЗ</button>
         </section>
             
     </main>
-    <footer></footer>
+    <footer>
+
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        var input1 = document.getElementById("surname");
+        var input2 = document.getElementById("name");
+
+        // Установка значения атрибута placeholder на пустую строку при фокусировке
+        input1.addEventListener("focus", function () {
+            input1.placeholder = "";
+        });
+
+        // Установка значения атрибута placeholder на пустую строку при фокусировке
+        input2.addEventListener("focus", function () {
+            input2.placeholder = "";
+        });
+        });
+    </script>
 </body>
 </html>
 
 
 
 
+
+
+
+
+
 body{
     font-family: 'Oswald', sans-serif;
+    background: #817070;
+    margin: 0;
+    padding: 0;
 }
 
 main{
-    background: #817070;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
 }
 
-.head{
+.head_text{
+    display: flex;
     font-weight: 500;
     font-size: 36px;
     line-height: 53px;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     text-transform: uppercase;
-}
-
-.order{
-    color: #fff;
-    font-size: 20px;
+    background-color: #fff;
+    margin: 0;
+    height: 110px;
 }
 
 .checkbox{
     position: relative;
     padding: 0 0 0 40px;
     cursor: pointer;
+}
+
+.fio{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.input_fio{
+    background-color: #817070;
+    text-align: center;
+    width: 300px;
+    height: 55px;
+    border: #fff 3px solid;
+    margin: 86px 32px 84px 32px;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.input_fio::placeholder{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    font-family:  'Oswald', sans-serif;
+    background-color: #817070;
+}
+
+.colums{
+    
+}
+.column_1{
+    display: flex;
+    flex-direction: column;
+}
+.column_2{
+    display: flex;
+    flex-direction: column;
 }

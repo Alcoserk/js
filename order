@@ -19,34 +19,58 @@
             </div>
             <div class="colums">
                 <div class="column_1">
-                    <input class="checkbox" id="product" type="radio" value="80">
-                    <label for="product">Эспрессо 80р.</label>
-
-                    <input class="checkbox" id="product" type="radio" value="110">
-                    <label for="product">Американо 110р.</label>
-
-                    <input class="checkbox" id="product" type="radio" value="120">
-                    <label for="product">Латте 120р.</label>
-
-                    <input class="checkbox" id="product" type="radio" value="90">
-                    <label for="product">Капучино 90р.</label>
+                    <div class="product">
+                        <input class="checkbox" id="product" type="radio" value="80">
+                        <label for="product">Эспрессо 80р.</label>
+                        <input type="text" class="input_num" placeholder="0">
+                    </div>
+                    
+                    <div class="product">
+                        <input class="checkbox" id="product" type="radio" value="110">
+                        <label for="product">Американо 110р.</label>
+                        <input type="text" class="input_num" placeholder="0">
+                    </div>
+                    
+                    <div class="product">
+                        <input class="checkbox" id="product" type="radio" value="120">
+                        <label for="product">Латте 120р.</label>
+                        <input type="text" class="input_num" placeholder="0">
+                    </div>
+                    
+                    <div class="product">
+                        <input class="checkbox" id="product" type="radio" value="90">
+                        <label for="product">Капучино 90р.</label>
+                        <input type="text" class="input_num" placeholder="0">
+                    </div>
                 </div>
 
                 <div class="column_2">
-                    <input class="checkbox" id="product" type="radio" value="80">
-                    <label for="product">Шоколадный кекс 80р.</label>
-
-                    <input class="checkbox" id="product" type="radio" value="90">
-                    <label for="product">Черничный кекс 90р.</label>
-
-                    <input class="checkbox" id="product" type="radio" value="100">
-                    <label for="product">Яблочный торт 100р.</label>
+                    <div class="product">
+                        <input class="checkbox" id="product" type="radio" value="80">
+                        <label for="product">Шоколадный кекс 80р.</label>
+                        <input type="text" class="input_num" placeholder="0">
+                    </div>
+                    
+                    <div class="product">
+                        <input class="checkbox" id="product" type="radio" value="90">
+                        <label for="product">Черничный кекс 90р.</label>
+                        <input type="text" class="input_num" placeholder="0">
+                    </div>
+                    
+                    <div class="product">
+                        <input class="checkbox" id="product" type="radio" value="100">
+                        <label for="product">Яблочный торт 100р.</label>
+                        <input type="text" class="input_num" placeholder="0">
+                    </div>
+                    
                 </div>
             </div>
             
-            <p class="result">Итого:</p>
-
-            <button>ОФОРМИТЬ ЗАКАЗ</button>
+            <p class="result">Итого: <span id="total"></span>р.</p>
+            <div class="btn">
+                <button class="btn_order">ОФОРМИТЬ ЗАКАЗ</button>
+            </div>
+            
         </section>
             
     </main>
@@ -55,31 +79,28 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        var input1 = document.getElementById("surname");
-        var input2 = document.getElementById("name");
+        document.addEventListener("fio_loaded", function () {
+            var input1 = document.getElementById("surname");
+            var input2 = document.getElementById("name");
 
-        // Установка значения атрибута placeholder на пустую строку при фокусировке
-        input1.addEventListener("focus", function () {
-            input1.placeholder = "";
+            // Установка значения атрибута placeholder на пустую строку при фокусировке
+            input1.addEventListener("focus", function () {
+                input1.placeholder = "";
+            });
+
+            // Установка значения атрибута placeholder на пустую строку при фокусировке
+            input2.addEventListener("focus", function () {
+                input2.placeholder = "";
+            });
         });
 
-        // Установка значения атрибута placeholder на пустую строку при фокусировке
-        input2.addEventListener("focus", function () {
-            input2.placeholder = "";
+        document.addEventListener("Add_counter", function(){
+
         });
-        });
+
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 body{
     font-family: 'Oswald', sans-serif;
@@ -94,6 +115,11 @@ main{
     align-items: center;
     color: #fff;
     font-size: 20px;
+}
+
+label{
+    margin-right: 36px;
+    margin-left: 16px;
 }
 
 .head_text{
@@ -142,14 +168,67 @@ main{
     background-color: #817070;
 }
 
+.input_num{
+    background-color: #817070;
+    text-align: center;
+    width: 80px;
+    height: 55px;
+    border: #fff 3px solid;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+}
+
+.input_num::placeholder{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 300;
+    font-family:  'Oswald', sans-serif;
+    background-color: #817070;
+}
+
 .colums{
-    
+    display: flex;
+    justify-content: space-between;
 }
 .column_1{
-    display: flex;
+    display: flex-start;
     flex-direction: column;
+    align-items: center;
 }
 .column_2{
-    display: flex;
+    display: flex-start;
     flex-direction: column;
+}
+
+.product{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.result{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}
+
+.btn_order{
+    
+
+    background-color: #fff;
+    color: #817070;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    border: none;
+    padding: 13px 20px 13px 20px;
 }

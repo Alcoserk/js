@@ -14,31 +14,31 @@
     <main>
         <section class="order">
             <div class="fio">
-                <input type="text" class="input_fio" id="surname" placeholder="Введите Фамилию">
-                <input type="text" class="input_fio" id="name" placeholder="Введите Имя">
+                <input type="text" class="input_fio" id="surname" placeholder="Введите Фамилию" value="">
+                <input type="text" class="input_fio" id="name" placeholder="Введите Имя" value="">
             </div>
             <div class="colums">
                 <div class="column_1">
                     <div class="product">
-                        <input class="checkbox" id="product_1" type="radio" value="80">
+                        <input class="checkbox" id="product_1" type="checkbox" value="80">
                         <label for="product_1">Эспрессо 80р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product_2" type="radio" value="110">
+                        <input class="checkbox" id="product_2" type="checkbox" value="110">
                         <label for="product_2">Американо 110р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product_3" type="radio" value="120">
+                        <input class="checkbox" id="product_3" type="checkbox" value="120">
                         <label for="product_3">Латте 120р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product_4" type="radio" value="90">
+                        <input class="checkbox" id="product_4" type="checkbox" value="90">
                         <label for="product_4">Капучино 90р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
@@ -46,19 +46,19 @@
 
                 <div class="column_2">
                     <div class="product">
-                        <input class="checkbox" id="product_5" type="radio" value="80">
+                        <input class="checkbox" id="product_5" type="checkbox" value="80">
                         <label for="product_5">Шоколадный кекс 80р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product_6" type="radio" value="90">
+                        <input class="checkbox" id="product_6" type="checkbox" value="90">
                         <label for="product_6">Черничный кекс 90р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product_7" type="radio" value="100">
+                        <input class="checkbox" id="product_7" type="checkbox" value="100">
                         <label for="product_7">Яблочный торт 100р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
@@ -79,77 +79,76 @@
     </footer>
 
     <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const name = document.querySelector('#name');
+        const surname = document.querySelector('#surname');
         const radio_Buttons = document.querySelectorAll('.checkbox');
         const btn_Element = document.querySelector('.btn_order');
         const result_Element = document.querySelector('#total');
-        const product_Count = document.querySelectorAll('.input_num');
+        const product_Counts = document.querySelectorAll('.input_num');
+        let total_Changes = 0;
 
-        btn_Element.addEventListener("click", function(){
-            let selected_Contact_Values  = 0;
-                
-            for(const radio_Button of radio_Buttons){
-                if(radio_Button.checked){
-                    selected_Contact_Values += parseInt(radio_Button.value)
-                }
-            }
-
-            if(selected_Contact_Values != 0){
-                result_Element.textContent = selected_Contact_Values;
-                product_Count.textContent = selected_Placeholder_Values + 1;
-            }else{
-                result_Element.textContent = "выберите товары";
-            }
+        name.addEventListener("change", function(){
+            name.textContent = name.value;
         });
+
+        surname.addEventListener("change", function(){
+            surname.textContent = surname.value;
+        });
+
+        // Функция для обновления общей суммы
+        function updateTotal() {
+            let totalPrice = 0;
+            radio_Buttons.forEach((element, index) => {
+                if (element.checked) {
+                    totalPrice += parseInt(element.value) * parseInt(product_Counts[index].placeholder);
+                }
+            });
+            result_Element.textContent = totalPrice;
+        }
+
+        // Слушатель события change для флажков
+        radio_Buttons.forEach((element, index) => {
+            element.addEventListener("change", function(){
+                if(element.checked){
+                    product_Counts[index].placeholder = 1;
+                    total_Changes += parseInt(element.value) * parseInt(product_Counts[index].placeholder);
+                } else {
+                    product_Counts[index].placeholder = 1;
+                    total_Changes -= parseInt(element.value) * parseInt(product_Counts[index].placeholder);
+                }
+
+                if(!isNaN(total_Changes)){
+                    updateTotal(); // Обновление общей суммы
+                } else {
+                    result_Element.textContent = "Пусто";
+                }
+            });
+        });
+
+        // Слушатель события input для изменения количества товаров
+        product_Counts.forEach((element, index) => {
+            element.addEventListener("input", function(){
+                if (!isNaN(element.value) && parseInt(element.value) >= 0) {
+                    product_Counts[index].placeholder = element.value;
+                    total_Changes = 0; // Сброс общей суммы
+                    radio_Buttons.forEach((radio, idx) => {
+                        if (radio.checked) {
+                            total_Changes += parseInt(radio.value) * parseInt(product_Counts[idx].placeholder);
+                        }
+                    });
+                    updateTotal(); // Обновление общей суммы
+                }
+            });
+        });
+
+        btn_Element.addEventListener('click', function(){
+            alert("Заказчик: " + name.value + " " + surname.value + "\n" + "Итого: " + total_Changes);
+        });
+    });
     </script>
 </body>
 </html>
-
-
-
-Для реализации этой функциональности нужно изменить обработчик событий для элементов checkbox. Если элемент уже выбран, то при повторном нажатии на него его выбор должен быть отменен, и его значение должно быть вычтено из общей суммы. Вот обновленный код:
-
-javascript
-Copy code
-document.addEventListener("DOMContentLoaded", function() {
-    const checkboxes = document.querySelectorAll('.checkbox');
-    const inputNums = document.querySelectorAll('.input_num');
-    const btnOrder = document.querySelector('.btn_order');
-
-    checkboxes.forEach(function(checkbox, index) {
-        checkbox.addEventListener('change', function() {
-            // Если элемент выбран
-            if (this.checked) {
-                // Если placeholder равен "0", устанавливаем его значение на "1"
-                if (inputNums[index].placeholder === "0") {
-                    inputNums[index].placeholder = "1";
-                }
-            } else {
-                // Если элемент не выбран, устанавливаем значение placeholder обратно на "0"
-                inputNums[index].placeholder = "0";
-            }
-        });
-    });
-
-    btnOrder.addEventListener('click', function() {
-        let totalPrice = 0;
-        inputNums.forEach(function(input, index) {
-            // Если placeholder равен "1", добавляем значение к общей сумме
-            if (input.placeholder === "1") {
-                totalPrice += parseInt(input.previousElementSibling.value);
-            }
-        });
-        // Выводим alert с общей суммой
-        alert("Общая стоимость заказа: " + totalPrice + "р.");
-    });
-});
-Теперь при повторном нажатии на уже выбранный элемент его выбор отменяется, его значение вычитается из общей суммы, и его placeholder снова становится равным "0".
-
-
-
-
-
-
-
 
 
 

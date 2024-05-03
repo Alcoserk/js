@@ -20,46 +20,46 @@
             <div class="colums">
                 <div class="column_1">
                     <div class="product">
-                        <input class="checkbox" id="product" type="radio" value="80">
-                        <label for="product">Эспрессо 80р.</label>
+                        <input class="checkbox" id="product_1" type="radio" value="80">
+                        <label for="product_1">Эспрессо 80р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product" type="radio" value="110">
-                        <label for="product">Американо 110р.</label>
+                        <input class="checkbox" id="product_2" type="radio" value="110">
+                        <label for="product_2">Американо 110р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product" type="radio" value="120">
-                        <label for="product">Латте 120р.</label>
+                        <input class="checkbox" id="product_3" type="radio" value="120">
+                        <label for="product_3">Латте 120р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product" type="radio" value="90">
-                        <label for="product">Капучино 90р.</label>
+                        <input class="checkbox" id="product_4" type="radio" value="90">
+                        <label for="product_4">Капучино 90р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                 </div>
 
                 <div class="column_2">
                     <div class="product">
-                        <input class="checkbox" id="product" type="radio" value="80">
-                        <label for="product">Шоколадный кекс 80р.</label>
+                        <input class="checkbox" id="product_5" type="radio" value="80">
+                        <label for="product_5">Шоколадный кекс 80р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product" type="radio" value="90">
-                        <label for="product">Черничный кекс 90р.</label>
+                        <input class="checkbox" id="product_6" type="radio" value="90">
+                        <label for="product_6">Черничный кекс 90р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
                     <div class="product">
-                        <input class="checkbox" id="product" type="radio" value="100">
-                        <label for="product">Яблочный торт 100р.</label>
+                        <input class="checkbox" id="product_7" type="radio" value="100">
+                        <label for="product_7">Яблочный торт 100р.</label>
                         <input type="text" class="input_num" placeholder="0">
                     </div>
                     
@@ -79,25 +79,27 @@
     </footer>
 
     <script>
-        document.addEventListener("fio_loaded", function () {
-            var input1 = document.getElementById("surname");
-            var input2 = document.getElementById("name");
+        const radio_Buttons = document.querySelectorAll('.checkbox');
+        const btn_Element = document.querySelector('.btn_order');
+        const result_Element = document.querySelector('#total');
+        const product_Count = document.querySelectorAll('.input_num');
 
-            // Установка значения атрибута placeholder на пустую строку при фокусировке
-            input1.addEventListener("focus", function () {
-                input1.placeholder = "";
-            });
+        btn_Element.addEventListener("click", function(){
+            let selected_Contact_Values  = 0;
+                
+            for(const radio_Button of radio_Buttons){
+                if(radio_Button.checked){
+                    selected_Contact_Values += parseInt(radio_Button.value)
+                }
+            }
 
-            // Установка значения атрибута placeholder на пустую строку при фокусировке
-            input2.addEventListener("focus", function () {
-                input2.placeholder = "";
-            });
+            if(selected_Contact_Values != 0){
+                result_Element.textContent = selected_Contact_Values;
+                product_Count.textContent = selected_Placeholder_Values + 1;
+            }else{
+                result_Element.textContent = "выберите товары";
+            }
         });
-
-        document.addEventListener("Add_counter", function(){
-
-        });
-
     </script>
 </body>
 </html>

@@ -104,6 +104,56 @@
 </body>
 </html>
 
+
+
+Для реализации этой функциональности нужно изменить обработчик событий для элементов checkbox. Если элемент уже выбран, то при повторном нажатии на него его выбор должен быть отменен, и его значение должно быть вычтено из общей суммы. Вот обновленный код:
+
+javascript
+Copy code
+document.addEventListener("DOMContentLoaded", function() {
+    const checkboxes = document.querySelectorAll('.checkbox');
+    const inputNums = document.querySelectorAll('.input_num');
+    const btnOrder = document.querySelector('.btn_order');
+
+    checkboxes.forEach(function(checkbox, index) {
+        checkbox.addEventListener('change', function() {
+            // Если элемент выбран
+            if (this.checked) {
+                // Если placeholder равен "0", устанавливаем его значение на "1"
+                if (inputNums[index].placeholder === "0") {
+                    inputNums[index].placeholder = "1";
+                }
+            } else {
+                // Если элемент не выбран, устанавливаем значение placeholder обратно на "0"
+                inputNums[index].placeholder = "0";
+            }
+        });
+    });
+
+    btnOrder.addEventListener('click', function() {
+        let totalPrice = 0;
+        inputNums.forEach(function(input, index) {
+            // Если placeholder равен "1", добавляем значение к общей сумме
+            if (input.placeholder === "1") {
+                totalPrice += parseInt(input.previousElementSibling.value);
+            }
+        });
+        // Выводим alert с общей суммой
+        alert("Общая стоимость заказа: " + totalPrice + "р.");
+    });
+});
+Теперь при повторном нажатии на уже выбранный элемент его выбор отменяется, его значение вычитается из общей суммы, и его placeholder снова становится равным "0".
+
+
+
+
+
+
+
+
+
+
+
 body{
     font-family: 'Oswald', sans-serif;
     background: #817070;

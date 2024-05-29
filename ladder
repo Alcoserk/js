@@ -1,0 +1,21 @@
+let ladder = {
+  step: 0,
+  up() {
+    this.step++;
+    return this;
+  },
+  down() {
+    this.step--;
+    return this;
+  },
+  showStep() {
+    alert( this.step );
+    return this;
+  }
+};
+
+ladder.up().up().down().showStep().down().showStep();
+
+
+Суть в том что без return this;мы не сможем сделать такой вызов - ladder.up().up().down().showStep().down().showStep();
+придется делать каждый раз новый ввод

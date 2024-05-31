@@ -1,0 +1,30 @@
+//Стандарнтный вариант написания 
+function sayHI(){
+  console.log("Hello" + " " + this.name);
+};
+
+let user = {name: 'Alex'};
+let admin = {name: 'Alexandr'};
+
+user.f = sayHI;
+admin.f = sayHI;
+
+user.f()
+admin.f()
+
+//Через стрелочные функции
+function newF() {  
+    const sayHI = () => {
+    console.log("Hello" + " " + this.name);
+    }
+    sayHI()
+};
+
+let user = {name: 'Alex'};
+let admin = {name: 'Alexandr'};
+
+user.f = newF;
+admin.f = newF;
+
+user.f()
+admin.f()

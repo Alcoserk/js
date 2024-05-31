@@ -1,0 +1,15 @@
+function Users(name, age){
+    this.name = name;
+    this.age = age;
+    this.sayHi = function(){
+        console.log('Меня зовут' + ' ' + this.name)
+    }
+};
+
+let user = new Users('Alex', 26);
+let user2 = new Users('Alexander', 62);
+
+console.log(user);
+console.log(user2);
+
+user.sayHi()
